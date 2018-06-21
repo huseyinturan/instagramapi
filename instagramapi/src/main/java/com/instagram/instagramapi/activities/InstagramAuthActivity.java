@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.webkit.CookieManager;
 import android.webkit.CookieSyncManager;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 
 import com.instagram.instagramapi.R;
@@ -77,6 +78,9 @@ public class InstagramAuthActivity extends Activity {
                     if (!extras.containsKey(InstagramEngine.IS_LOGIN_BUTTON)) {
                         InstagramEngine.getInstance(InstagramAuthActivity.this).setInstagramLoginButtonCallback(instagramLoginCallbackListener);
                     }
+
+                    WebSettings settings=instagrramAuthWebView.getSettings();
+                    settings.setJavaScriptEnabled(true);
 
                     instagrramAuthWebView.setWebViewClient(webViewClient);
                     instagrramAuthWebView.loadUrl(authURL);
